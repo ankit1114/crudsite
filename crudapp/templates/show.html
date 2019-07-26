@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Records</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>User ID</th>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>User Contact</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for curdapp in curdapps %}
+    <tr>
+        <td>{{ curdapp.id }}</td>
+        <td>{{ curdapp.name }}</td>
+        <td>{{ curdapp.email }}</td>
+        <td>{{ curdapp.contact }}</td>
+        <td>
+            <a href="/edit/{{ curdapp.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ curdapp.id }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/det" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>
